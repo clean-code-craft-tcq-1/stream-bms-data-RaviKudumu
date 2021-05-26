@@ -1,6 +1,5 @@
 import unittest
 import streaming_bms_data
-
 class test_streaming_bms_data(unittest.TestCase):
     def test_format_battery_parameter(self):
         bms_param = streaming_bms_data.format_battery_parameter()
