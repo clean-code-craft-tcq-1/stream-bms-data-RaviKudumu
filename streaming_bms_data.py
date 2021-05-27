@@ -1,4 +1,5 @@
 import random
+import time,datetime
 
 batter_limits = {"temperature": [0,45,"temperature"],
                     "soc": [20,80,"soc"],
@@ -15,11 +16,21 @@ def format_battery_parameter():
     charge_rate_limits = batter_limits['charge_rate']
     format_battery_param["charge_rate"] = round(random.uniform(charge_rate_limits[0],
                                                          charge_rate_limits[1]), 2)
+    format_battery_param['timestamp'] = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     return format_battery_param
 
-def send_to_console():
-    while(True):
-        print(format_battery_parameter())
-        stop_sending = 'X'
-        if stop_sending == 'X':
+def stream_bms_readings(max_count):
+    bms_records_count = 0
+    count = 0
+    while(count < max_count):
+        f = open("BMS_stream_controller.txt", "r")
+        if f.read() == 'send':
+            f.close()
+            print(format_battery_parameter())
+            bms_records_count += 1
+        else:
+            f.close()
             break
+        time.sleep(1)
+        count += 1
+    return bms_records_count
