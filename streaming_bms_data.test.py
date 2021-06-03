@@ -1,5 +1,5 @@
 import unittest
-import streaming_bms_data
+import streaming_bms_data,control_bms_stream
 
 class test_streaming_bms_data(unittest.TestCase):
     def test_format_battery_parameter(self):
