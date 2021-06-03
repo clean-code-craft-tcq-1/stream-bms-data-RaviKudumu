@@ -10,8 +10,8 @@ class test_streaming_bms_data(unittest.TestCase):
         self.assertTrue(bms_param['timestamp'])
     def test_stream_bms_reading_send(self):
         control_bms_stream.control_bms_stream('send')
-        count = streaming_bms_data.stream_bms_readings(20)
-        self.assertTrue(count == 2)
+        count = streaming_bms_data.stream_bms_readings(10)
+        self.assertTrue(count == 10)
     def test_stream_bms_reading_stop(self):
         control_bms_stream.control_bms_stream('stop')
         count = streaming_bms_data.stream_bms_readings(2)
@@ -25,7 +25,6 @@ class test_streaming_bms_data(unittest.TestCase):
         f = open("BMS_stream_controller.txt", "r")
         self.assertEqual(f.read(), 'stop')
         f.close()
-        control_bms_stream.control_bms_stream('send')
 
 if __name__ == '__main__':
     unittest.main()
