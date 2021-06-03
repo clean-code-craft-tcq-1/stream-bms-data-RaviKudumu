@@ -31,6 +31,8 @@ def stream_bms_readings(max_count):
         else:
             f.close()
             break
-        time.sleep(1)
+        time.sleep(1/5)
         count += 1
     return bms_records_count
+  
+stream_bms_readings(500)
