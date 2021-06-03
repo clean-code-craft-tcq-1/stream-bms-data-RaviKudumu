@@ -35,4 +35,4 @@ def stream_bms_readings(max_count):
         count += 1
     return bms_records_count
   
-stream_bms_readings(500)
+stream_bms_readings(5000)
