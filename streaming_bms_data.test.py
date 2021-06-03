@@ -1,5 +1,5 @@
 import unittest
-import streaming_bms_data,control_bms_stream
+import streaming_bms_data
 
 class test_streaming_bms_data(unittest.TestCase):
     def test_format_battery_parameter(self):
@@ -10,7 +10,7 @@ class test_streaming_bms_data(unittest.TestCase):
         self.assertTrue(bms_param['timestamp'])
     def test_stream_bms_reading_send(self):
         control_bms_stream.control_bms_stream('send')
-        count = streaming_bms_data.stream_bms_readings(2)
+        count = streaming_bms_data.stream_bms_readings(20)
         self.assertTrue(count == 2)
     def test_stream_bms_reading_stop(self):
         control_bms_stream.control_bms_stream('stop')
