@@ -25,6 +25,7 @@ class test_streaming_bms_data(unittest.TestCase):
         f = open("BMS_stream_controller.txt", "r")
         self.assertEqual(f.read(), 'stop')
         f.close()
+        control_bms_stream.control_bms_stream('send')
 
 if __name__ == '__main__':
     unittest.main()
