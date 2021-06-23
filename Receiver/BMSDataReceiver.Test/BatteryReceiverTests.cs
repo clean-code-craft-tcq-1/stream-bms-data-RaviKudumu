@@ -18,7 +18,7 @@ namespace BMSDataReceiver.Test
         public void WhenReadingInputIsNotNull_ThenGetBatteryParamtersMeasuresReturnsNotNull()
         {
             BatteryParameterDataFromInput testbatteryinput = new BatteryParameterDataFromInput();
-            Assert.IsNotNull(testbatteryinput.GetBatteryParamtersMeasures("Temperature : 36"));
+            Assert.IsNotNull(testbatteryinput.GetBatteryParamtersMeasures("{'temperature': 22, 'soc': 23, 'charge_rate': 0.01, 'timestamp': '23/06/2021 15:32:43'}"));
         }
         [TestMethod]
         public void WhenParameterListIsEmpty_ThenInitializeBatteryParameterListsReturnsNull()
