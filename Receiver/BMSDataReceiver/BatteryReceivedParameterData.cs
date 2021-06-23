@@ -15,12 +15,9 @@ namespace BMSDataReceiver
             {
                 var batteryReadings = Regex.Matches(readingsInput, @"\d+").Cast<Match>().Select(x => double.Parse(x.Value)).ToArray();
                 BatteryParameters batteryparameters = new BatteryParameters();
-                if (batteryReadings != null && batteryReadings.Length >= 4)
-                {
-                    batteryparameters.Temperature = batteryReadings[0];
-                    batteryparameters.StateOfCharge = batteryReadings[1];
-                    batteryparameters.ChargeRate = Convert.ToDouble(batteryReadings[2].ToString() + "." + batteryReadings[3].ToString());
-                }
+                batteryparameters.Temperature = batteryReadings[0];
+                batteryparameters.StateOfCharge = batteryReadings[1];
+                batteryparameters.ChargeRate = Convert.ToDouble(batteryReadings[2].ToString() + "." + batteryReadings[3].ToString());
                 return batteryparameters;
             }
             return null;
